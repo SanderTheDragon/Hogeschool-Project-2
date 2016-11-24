@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="./stylesheet.css"></link>
         <script src="https://sanderthedragon.github.io/Hogeschool-Project-2/jquery-3.1.1.min.js"></script>
     </head>
-    <body onload="$('title').innerText = 'SnackOverflow - Project 2';">
+    <body onload="setTitle('SnackOverflow - Project 2)">
         <script>
             curl = "";
             
@@ -63,6 +63,12 @@
                 });
             });
             
+            function setTitle(title)
+            {
+                $("title").each(function() {
+                    $(this).innerText = title;
+                });
+            };
         </script>
         <div class="head">
             <span id="title">Project 2</span>
