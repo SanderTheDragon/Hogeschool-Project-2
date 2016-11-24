@@ -1,0 +1,135 @@
+html, body
+{
+    top: 0;
+    left: 0;
+    
+    width: 100%;
+    height: 100%;
+    
+    margin: 0;
+}
+
+*
+{
+    box-sizing: border-box;
+}
+
+
+
+div.head
+{
+    width: 100%;
+    
+    margin: 5px 0 0 0;
+    padding: 0 0 5px 0;
+    
+    border-bottom: 1px solid black;
+    
+    text-align: center;
+}
+
+div.sidebar
+{
+    float: left;
+    
+    width: 20%;
+    height: 100%;
+    
+    border-right: 1px solid black;
+}
+
+div.content
+{
+    float: left;
+    
+    width: 80%;
+    height: 100%;
+    
+    left: 20%;
+    right: 0;
+    
+    padding: 5px;
+}
+
+
+
+span#title
+{
+    font-size: 2em;
+    font-weight: bolder;
+}
+
+span#group
+{
+    font-size: 1em;
+    font-style: italic;
+}
+
+span#names
+{
+    
+}
+
+
+
+ul
+{
+    list-style-type: none;
+}
+
+div.sidebar > ul
+{
+    width: 100%;
+    
+    padding: 0;
+    margin: 0;
+}
+
+div.sidebar > ul > li
+{
+    width: 100%;
+    
+    border-bottom: 1px solid black;
+    
+    overflow: hidden;
+    
+    font-weight: bold;
+}
+
+div.sidebar > ul > li > ul
+{
+    width: 100%;
+    
+    padding: 0;
+    margin: 0;
+}
+
+div.sidebar > ul > li > ul > li.subnav
+{
+    border-top: 1px solid black;
+}
+
+div.sidebar > ul > li > span
+{
+    display: inline-block;
+    
+    width: 100%;
+    
+    padding: 5px 0 5px 10px;
+}
+
+div.sidebar > ul > li > ul > li > span
+{
+    display: inline-block;
+    
+    width: 100%;
+    
+    padding: 5px 0 5px 20px;
+}
+
+
+
+span.filetype
+{
+    font-size: 2em;
+}

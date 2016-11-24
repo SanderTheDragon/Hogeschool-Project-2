@@ -1,18 +1,89 @@
 <html>
-	<head>
-		<title>SnackOverflow - Project 2</title>
-	</head>
-	<body>
-		<strong>Project 2</strong>
-		<br/>
-		<br/>
-		<i>SnackOverflow</i>
-		<br/>
-		<span>Kirty, Justin, Sander</span>
-		<br/>
-		<br/>
-		<a href="./files/Samenwerkingscontract.pdf">Samenwerkingscontract</a>
-		<br/>
-		<a href="./files/voortgangsrapportages/voortgangsrapportages.html">Voortgangsrapportages</a>
-	</body>
+    <head>
+        <title>SnackOverflow - Project 2</title>
+        
+        <link rel="stylesheet" href="./stylesheet.css"></link>
+        <script src="https://sanderthedragon.github.io/Hogeschool-Project-2/jquery-3.1.1.min.js"></script>
+    </head>
+    <body>
+        <script>
+            curl = "";
+            
+            function navigate(url) {
+                $(".content").fadeOut(500, function() {
+                    $.get("https://sanderthedragon.github.io/Hogeschool-Project-2/" + url, function(data) {
+                        $(".content").html($.parseHTML(data));
+                        $(".content").fadeIn(500);
+                    });
+                    
+                    curl = url;
+                });
+            };
+            
+            $(document).ready(function() {
+                navigate("home.html");
+                
+                $(".sub").each(function() {
+                    $(this).slideUp(250);
+                });
+                
+                $(".nav > span").on("click", function() {
+                    
+                    if (curl == "files.html")
+                    {
+                        $(".file").each(function() {
+                            $(this).fadeTo(500, 1.0);
+                        });
+                    }
+                    
+                    if (curl != $(this).parent().attr("href"))
+                        navigate($(this).parent().attr("href"));
+                    
+                    id = $(this).parent().attr("id");
+                    $(".nav").removeClass("selected");
+                    $(this).parent().addClass("selected");
+                    
+                    $(".sub").each(function() {
+                        if ($(this).attr("id") == id + "_sub")
+                            $(this).slideDown(500);
+                        else
+                            $(this).slideUp(500);
+                    });
+                });
+                
+                $(".subnav > span").on("click", function() {
+                    $(".subnav").removeClass("subselected");
+                    $(this).parent().addClass("subselected");
+                    
+                    tar = $(this).parent().attr("target");
+                    $(".file").each(function() {
+                        $(this).fadeTo(500, 0.25);
+                    });
+                    $("#" + tar).fadeTo(500, 1.0);
+                });
+            });
+            
+        </script>
+        <div class="head">
+            <span id="title">Project 2</span>
+            <br/>
+            <span id="group">SnackOverflow</span>
+            <br/>
+            <span id="names">Kirty, Justin, Sander</span>
+        </div>
+        <div class="sidebar">
+            <ul>
+                <li class="nav selected" id="home" href="home.html"><span>Home</span></li>
+                <li class="nav" id="bestanden" href="files.html"><span>Bestanden</span>
+                    <ul class="sub" id="bestanden_sub">
+                        <li class="subnav" target="samenwerkingscontract"><span>Samenwerkingscontract<span></li>
+                        <li class="subnav" target="planning"><span>Planning<span></li>
+                        <li class="subnav" target="rapportages"><span>Rapportages<span></li>
+                        <li class="subnav" target="risklogs"><span>Risk logs<span></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="content"></div>
+    </body>
 </html>
