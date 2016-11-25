@@ -35,6 +35,12 @@
                             $(this).fadeTo(500, 1.0);
                         });
                     }
+                    if (curl == "evaluatie.html")
+                    {
+                        $(".file").each(function() {
+                            $(this).fadeTo(500, 1.0);
+                        });
+                    }
                     
                     if (curl != $(this).parent().attr("href"))
                         navigate($(this).parent().attr("href"));
