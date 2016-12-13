@@ -1,53 +1,163 @@
+<!DOCTYPE html>
 <html>
     <head>
         <title>SnackOverflow - Project 2</title>
         
         <link rel="stylesheet" href="./stylesheet.css"></link>
-        <script src="https://sanderthedragon.github.io/Hogeschool-Project-2/jquery-3.1.1.min.js"></script>
+        <script src="./jquery-3.1.1.min.js"></script>
+        
+        <meta charset="ISO-8859-1" />
     </head>
-    <body>
+    
+    <div style="display: none;" id="home">
+        <span id="intro">Hier staat alles over ons project.</span>
+    </div>
+    
+    <div style="display: none;" id="files">
+        <div class="filelist" id="afspraken_list">
+            <span>Afspraken<span class="right">&#9650</span></span>
+            <div class="filetable" id="afspraken_list_table">
+                <div><span id="samenwerking" class="filecol"><a href="./files/samenwerking.pdf">Samenwerkingscontract</a></span><span class="filedownload"><a href="./files/samenwerking.pdf" download>Download</a></span></div>
+                <div><span id="planning" class="filecol"><a href="./files/planning.pdf">Planning</a></span><span class="filedownload"><a href="./files/planning.pdf" download>Download</a></span></div>
+            </div>
+        </div>
+        <br /><br /><br />
+        <div class="filelist" id="voortgang_list">
+            <span>Voortgang<span class="right">&#9650</span></span>
+            <div class="filetable" id="voortgang_list_table">
+                <div><span id="rapportages" class="filecol"><a href="./files/rapportage01.pdf">Voortgangsrapportage week 1</a></span><span class="filedownload"><a href="./files/rapportage01.pdf" download>Download</a></span></div>
+                <div><span id="rapportages" class="filecol"><a href="./files/rapportage02.pdf">Voortgangsrapportage week 2</a></span><span class="filedownload"><a href="./files/rapportage02.pdf" download>Download</a></span></div>
+                <div><span id="rapportages" class="filecol"><a href="./files/rapportage03.pdf">Voortgangsrapportage week 3</a></span><span class="filedownload"><a href="./files/rapportage03.pdf" download>Download</a></span></div>
+                <div><span id="risklogs" class="filecol"><a href="./files/risklog01.pdf">Risk log</a></span><span class="filedownload"><a href="./files/risklog01.pdf" download>Download</a></span></div>
+                <div><span id="uren" class="filecol"><a href="./files/uren.pdf">Urenverantwoording</a></span><span class="filedownload"><a href="./files/uren.pdf" download>Download</a></span></div>
+            </div>
+        </div>
+        <br /><br /><br />
+        <div class="filelist" id="verslagen_list">
+            <span>Verslagen<span class="right">&#9650</span></span>
+            <div class="filetable" id="verslagen_list_table">
+                <div><span id="sensoranalyse" class="filecol"><a href="./files/analyse.pdf">Analyseverslag sensoren</a></span><span class="filedownload"><a href="./files/analyse.pdf" download>Download</a></span></div>
+                <div><span id="testrapport" class="filecol"><a href="#">Testrapport (Nog niet beschikbaar)</a></span><span class="filedownload"><a href="#" download>Download</a></span></div>
+            </div>
+        </div>
+        <br /><br /><br />
+        <div class="filelist" id="ontwerpen_list">
+            <span>Ontwerpen<span class="right">&#9650</span></span>
+            <div class="filetable" id="ontwerpen_list_table">
+                <div><span id="functioneel" class="filecol"><a href="./files/functioneelontwerp.pdf">Functioneel ontwerp</a></span><span class="filedownload"><a href="./files/functioneelontwerp.pdf" download>Download</a></span></div>
+                <div><span id="technisch" class="filecol"><a href="./files/technischontwerp.pdf">Technisch ontwerp</a></span><span class="filedownload"><a href="./files/technischontwerp.pdf" download>Download</a></span></div>
+            </div>
+        </div>
+        <br /><br /><br />
+        <div class="filelist" id="zelfevaluaties_list">
+            <span>Zelfevaluaties<span class="right">&#9650</span></span>
+            <div class="filetable" id="zelfevaluaties_list_table">
+                <div><span id="kirty" class="filecol"><a href="#">Kirty (Week 5) (nog niet beschikbaar)</a></span><span class="filedownload"><a href="#" download>Download</a></span></div>
+                <div><span id="kirty" class="filecol"><a href="#">Kirty (Week 10) (nog niet beschikbaar)</a></span><span class="filedownload"><a href="#" download>Download</a></span></div>
+                <div><span id="justin" class="filecol"><a href="#">Justin (Week 5) (nog niet beschikbaar)</a></span><span class="filedownload"><a href="#" download>Download</a></span></div>
+                <div><span id="justin" class="filecol"><a href="#">Justin (Week 10) (nog niet beschikbaar)</a></span><span class="filedownload"><a href="#" download>Download</a></span></div>
+                <div><span id="sander" class="filecol"><a href="#">Sander (Week 5) (nog niet beschikbaar)</a></span><span class="filedownload"><a href="#" download>Download</a></span></div>
+                <div><span id="sander" class="filecol"><a href="#">Sander (Week 10) (nog niet beschikbaar)</a></span><span class="filedownload"><a href="#" download>Download</a></span></div>
+            </div>
+        </div>
+        <br /><br /><br />
+        <div class="filelist" id="ander_list">
+            <span>Andere<span class="right">&#9650</span></span>
+            <div class="filetable" id="ander_list_table">
+                <div><span id="offerte" class="filecol"><a href="#">Offerte (nog niet beschikbaar)</a></span><span class="filedownload"><a href="#" download>Download</a></span></div>
+            </div>
+        </div>
+    </div>
+    
+    <div style="display: none;" id="code">
+        <a href="https://github.com/SanderTheDragon/Hogeschool-Project-2">Github</a>
+    </div>
+    
+    <body style="overflow: hidden;">
         <script>
             curl = "";
             
             function navigate(url) {
                 $(".content").fadeOut(500, function() {
-                    $.get("https://sanderthedragon.github.io/Hogeschool-Project-2/" + url, function(data) {
-                        $(".content").html($.parseHTML(data));
-                        $(".content").fadeIn(500);
-                    });
+                    data = $("div#" + url).html();
+                    
+                    $(".content").html($.parseHTML(data));
+                    $(".content").fadeIn(500);
                     
                     curl = url;
+                    
+                    load();
                 });
             };
             
+            function rotate(elem ,start, end) {
+                if (elem.attr("style") == "transform: rotate(" + end + "deg);")
+                    return;
+                
+                //$("body").css("overflow", "hidden");
+                
+                $({deg: start}).animate({deg: end}, {
+                    duration: 500,
+                    step: function(now) {
+                        elem.css({
+                            transform: 'rotate(' + now + 'deg)'
+                        });
+                    },
+                    /*done: function() {
+                        $("body").css("overflow", "auto");
+                    }*/
+                });
+            }
+            
             $(document).ready(function() {
-                navigate("home.html");
+                navigate("home");
+                
+                $(".sidebar").css("height", parseInt($("html").css("height")) - parseInt($(".head").css("height")));
+                $(".content").css("height", $(".sidebar").css("height"));
                 
                 $(".sub").each(function() {
                     $(this).slideUp(250);
                 });
+                $(".subsub").each(function() {
+                    $(this).slideUp(250);
+                });
+                
+                $(".nav > span > .right").each(function() {
+                    rotate($(this), 180, 0);
+                });
+                $(".subnav > span > .right").each(function() {
+                    rotate($(this), 180, 0);
+                });
                 
                 $(".nav > span").on("click", function() {
                     
-                    if (curl == "files.html")
+                    /*if (curl == "files")
                     {
                         $(".file").each(function() {
                             $(this).fadeTo(500, 1.0);
                         });
-                    }
-                    if (curl == "evaluatie.html")
-                    {
-                        $(".file").each(function() {
-                            $(this).fadeTo(500, 1.0);
-                        });
-                    }
+                    }*/
                     
                     if (curl != $(this).parent().attr("href"))
                         navigate($(this).parent().attr("href"));
                     
                     id = $(this).parent().attr("id");
-                    $(".nav").removeClass("selected");
+                    
+                    $(".nav").each(function() {
+                        if (!($(this).attr("id") === id))
+                        {
+                            $(this).removeClass("selected");
+                            rotate($(this).children("span").children(".right"), 180, 0);
+                
+                            $(".subnav > span > .right").each(function() {
+                                rotate($(this), 180, 0);
+                            });
+                        }
+                    });
+                    
                     $(this).parent().addClass("selected");
+                    if (!$(this).children(".right").hasClass("selected"))
+                        rotate($(this).children(".right"), 0, 180);
                     
                     $(".sub").each(function() {
                         if ($(this).attr("id") == id + "_sub")
@@ -55,19 +165,151 @@
                         else
                             $(this).slideUp(500);
                     });
+                    
+                    $(".subsub").each(function() {
+                        if ($(this).attr("id") == id + "_sub")
+                            $(this).slideDown(500);
+                        else
+                            $(this).slideUp(500);
+                    });
+                    
+                    $(".filetable").each(function() {
+                        if ($(this).attr("id") == id + "_list_table")
+                            $(this).slideDown(500);
+                        else
+                            $(this).slideUp(500);
+                    });
                 });
                 
                 $(".subnav > span").on("click", function() {
-                    $(".subnav").removeClass("subselected");
-                    $(this).parent().addClass("subselected");
+                    id = $(this).parent().attr("id");
                     
-                    tar = $(this).parent().attr("target");
+                    $(".subnav").each(function() {
+                        if (!($(this).attr("id") === id))
+                        {
+                            $(this).removeClass("subselected");
+                            rotate($(this).children("span").children(".right"), 180, 0);
+                        }
+                    });
+                    
+                    $(this).parent().addClass("subselected");
+                    if (!$(this).children(".right").hasClass("subselected"))
+                        rotate($(this).children(".right"), 0, 180);
+                    
+                    $(".subsub").each(function() {
+                        if ($(this).attr("id") == id + "_sub")
+                            $(this).slideDown(500);
+                        else
+                            $(this).slideUp(500);
+                    });
+                    
+                    
+                    $(".filetable").each(function() {
+                        if ($(this).attr("id") == id + "_list_table")
+                        {
+                            if (!$(this).hasClass("expanded"))
+                                $(this).parent().addClass("expanded");
+                            
+                            rotate($(this).parent().children("span").children(".right"), 0, 180);
+                            $(this).slideDown(500);
+                        }
+                        else
+                        {
+                            $(this).parent().removeClass("expanded");
+                            rotate($(this).parent().children("span").children(".right"), 180, 0);
+                            $(this).slideUp(500);
+                        }
+                    });
+                        
+                    /*tar = $(this).parent().attr("target");
                     $(".file").each(function() {
                         $(this).fadeTo(500, 0.25);
                     });
-                    $("#" + tar).fadeTo(500, 1.0);
+                    $("#" + tar).fadeTo(500, 1.0);*/
                 });
+                
+                $(".subsubnav > span").on("click", function() {
+                    $(".subsubnav").removeClass("subsubselected");
+                    $(this).parent().addClass("subsubselected");
+                    
+                    tar = $(this).parent().attr("target");
+                    
+                    /*$(".filetable > div").each(function() {
+                        $(this).animate({"background-color": "white"}, 500);
+                    });*/
+                    
+                    window.location.href = $("span#" + tar + ":last").children("a").attr("href");
+                    
+                    /*$(".file").each(function() {
+                        $(this).fadeTo(500, 0.25);
+                    });
+                    $("#" + tar).fadeTo(500, 1.0);*/
+                });
+                
+                load();
             });
+             
+             
+            
+            
+            
+            function load() {
+                $(".filetable").each(function() {
+                    rotate($(this).parent().children("span").children(".right"), 180, 0);
+                    $(this).slideUp(500);
+                });
+                
+                $(".filelist > span").on("click", function() {
+                    $(this).toggleClass("expanded");
+                    
+                    id = $(this).parent().attr("id");
+                    
+                    $(".filetable").each(function() {
+                        if ($(this).attr("id") == id + "_table")
+                        {
+                            if (!$(this).parent().hasClass("expanded"))
+                                $(this).parent().addClass("expanded");
+                            
+                            rotate($(this).parent().children("span").children(".right"), 0, 180);
+                            
+                            $(this).slideDown(500);
+                        }
+                        else
+                        {
+                            $(this).parent().removeClass("expanded");
+                            
+                            rotate($(this).parent().children("span").children(".right"), 180, 0);
+                            
+                            $(this).slideUp(500);
+                        }
+                    });
+                    
+                    
+                    
+                    $(".subnav").each(function() {
+                        if (!($(this).attr("id") == id.substring(0, id.indexOf('_', 2))))
+                        {
+                            $(this).removeClass("subselected");
+                            rotate($(this).children("span").children(".right"), 180, 0);
+                        }
+                        else
+                        {
+                            $(this).addClass("subselected");
+                            if (!$(this).children("span").children(".right").hasClass("subselected"))
+                                rotate($(this).children("span").children(".right"), 0, 180);
+                            
+                            id = $(this).attr("id");
+                            
+                            $(".subsub").each(function() {
+                                if ($(this).attr("id") == id + "_sub")
+                                    $(this).slideDown(500);
+                                else
+                                    $(this).slideUp(500);
+                        });
+                        }
+                    });
+                });
+            }
         </script>
         <div class="head">
             <span id="title">Project 2</span>
@@ -78,33 +320,49 @@
         </div>
         <div class="sidebar">
             <ul>
-                <li class="nav selected" id="home" href="home.html"><span>Home</span></li>
-                <li class="nav" id="bestanden" href="files.html"><span>Bestanden</span>
+                <li class="nav selected" id="home" href="home"><span>Home</span></li>
+                <li class="nav" id="bestanden" href="files"><span>Documenten<span class="right">&#9650</span></span>
                     <ul class="sub" id="bestanden_sub">
-                        <li class="subnav" target="samenwerkingscontract"><span>Samenwerkingscontract<span></li>
-                        <li class="subnav" target="planning"><span>Planning<span></li>
-                        <li class="subnav" target="uren"><span>Urenverantwoording</span></li>
-                        <li class="subnav" target="rapportages"><span>Rapportages<span></li>
-                        <li class="subnav" target="risklogs"><span>Risk logs<span></li>
-                        <li class="subnav" target="offerte"><span>Offerte<span></li>
-                        <li class="subnav" target="onderzoeksverslag"><span>Onderzoeksverslag<span></li>
-                        <li class="subnav" target="testplan"><span>Testplan<span></li>
-                        <li class="subnav" target="testrapport"><span>Testrapport<span></li>
+                        <li class="subnav" id="afspraken"><span>Afspraken<span class="right">&#9650</span></span>
+                            <ul class="subsub" id="afspraken_sub">
+                                <li class="subsubnav" target="samenwerking"><span>Samenwerkingscontract<span></li>
+                                <li class="subsubnav" target="planning"><span>Planning<span></li>
+                            </ul>
+                        </li>
+                        <li class="subnav" id="voortgang"><span>Voortgang<span class="right">&#9650</span></span>
+                            <ul class="subsub" id="voortgang_sub">
+                                <li class="subsubnav" target="rapportages"><span>Rapportages<span></li>
+                                <li class="subsubnav" target="risklogs"><span>Risk logs<span></li>
+                                <li class="subsubnav" target="uren"><span>Urenverantwoording</span></li>
+                            </ul>
+                        </li>
+                        <li class="subnav" id="verslagen"><span>Verslagen<span class="right">&#9650</span></span>
+                            <ul class="subsub" id="verslagen_sub">
+                                <li class="subsubnav" target="sensoranalyse"><span>Analyseverslag Sensoren</span></li>
+                                <li class="subsubnav" target="testrapport"><span>Testrapport<span></li>
+                            </ul>
+                        </li>
+                        <li class="subnav" id="ontwerpen"><span>Ontwerpen<span class="right">&#9650</span></span>
+                            <ul class="subsub" id="ontwerpen_sub">
+                                <li class="subsubnav" target="functioneel"><span>Functioneel ontwerp</span></li>
+                                <li class="subsubnav" target="technisch"><span>Technisch ontwerp</span></li>
+                            </ul>
+                        </li>
+                        <li class="subnav" id="zelfevaluaties"><span>Zelfevaluaties<span class="right">&#9650</span></span>
+                            <ul class="subsub" id="zelfevaluaties_sub">
+                                <li class="subsubnav" target="kirty"><span>Kirty</span></li>
+                                <li class="subsubnav" target="justin"><span>Justin</span></li>
+                                <li class="subsubnav" target="sander"><span>Sander</span></li>
+                            </ul>
+                        </li>
+                        <li class="subnav" id="ander"><span>Andere<span class="right">&#9650</span></span>
+                            <ul class="subsub" id="ander_sub">
+                                <li class="subsubnav" target="offerte"><span>Offerte<span></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
-                <li class="nav" id="ontwerpen" href="ontwerpen.html"><span>Ontwerpen</span>
-                    <ul class="sub" id="ontwerpen_sub">
-                        <li class="subnav" target="functioneel"><span>Functioneel ontwerp</span></li>
-                    </ul>
-                </li>
-                <li class="nav" id="code" href="code.html"><span>Code</span></li>
-                <li class="nav" id="zelfevaluaties" href="evaluatie.html"><span>Zelfevaluaties</span>
-                    <ul class="sub" id="zelfevaluaties_sub">
-                        <li class="subnav" target="kirty"><span>Kirty</span></li>
-                        <li class="subnav" target="justin"><span>Justin</span></li>
-                        <li class="subnav" target="sander"><span>Sander</span></li>
-                    </ul>
-                </li>
+                <li class="nav" id="code" href="code"><span>Code</span></li>
             </ul>
         </div>
         <div class="content"></div>

@@ -20,8 +20,7 @@ div.head
 {
     width: 100%;
     
-    margin: 5px 0 0 0;
-    padding: 0 0 5px 0;
+    padding: 5px 0 5px 0;
     
     border-bottom: 1px solid black;
     
@@ -47,8 +46,6 @@ div.content
     
     left: 20%;
     right: 0;
-    
-    padding: 5px;
 }
 
 
@@ -96,7 +93,7 @@ div.sidebar > ul > li
     font-weight: bold;
 }
 
-div.sidebar > ul > li > ul
+div.sidebar > ul > li > ul, div.sidebar > ul > li > ul > li > ul
 {
     width: 100%;
     
@@ -104,7 +101,7 @@ div.sidebar > ul > li > ul
     margin: 0;
 }
 
-div.sidebar > ul > li > ul > li.subnav
+div.sidebar > ul > li > ul > li.subnav, div.sidebar > ul > li > ul > li > ul > li.subsubnav
 {
     border-top: 1px solid black;
 }
@@ -127,9 +124,96 @@ div.sidebar > ul > li > ul > li > span
     padding: 5px 0 5px 20px;
 }
 
-
-
-.filetype
+div.sidebar > ul > li > ul > li > ul > li > span
 {
+    display: inline-block;
+    
+    width: 100%;
+    
+    padding: 5px 0 5px 30px;
+}
+
+span.right
+{
+    float: right;
+    
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.rotate {
+     -moz-transform: rotate(-180deg);
+       -o-transform: rotate(-180deg);
+  -webkit-transform: rotate(-180deg);
+      -ms-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+               zoom: 1;
+}
+
+
+
+span#intro
+{
+    display: inline-block;
+    
+    margin: 5px;
+}
+
+
+
+div.filelist
+{
+    border-bottom: 1px solid black;
+}
+
+div.filelist > span
+{
+    display: inline-block;
+    
+    width: 100%;
+    height: 47.5px;
+    
+    padding-top: 5px;
+    padding-left: 5px;
+    
     font-size: 2em;
+}
+
+div.filelist > span > span.right
+{
+    display: inline-block;
+    
+    padding-top: 0;
+    padding-right: 5px;
+}
+
+.filetable
+{
+    display: none;
+}
+
+.filetable > div
+{
+    border-top: 1px solid black;
+}
+
+.filecol
+{
+    display: inline-block;
+    
+    width: 80%;
+    
+    padding: 5px;
+    
+    border-right: 1px solid black;
+}
+
+.filedownload
+{
+    display: inline-block;
+    
+    width: 20%;
+    
+    padding: 5px;
+    padding-left: 10px;
 }
