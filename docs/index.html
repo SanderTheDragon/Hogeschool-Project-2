@@ -28,7 +28,8 @@
                 <div><span id="rapportages" class="filecol"><a href="./files/rapportage01.pdf">Voortgangsrapportage week 1</a></span><span class="filedownload"><a href="./files/rapportage01.pdf" download>Download</a></span></div>
                 <div><span id="rapportages" class="filecol"><a href="./files/rapportage02.pdf">Voortgangsrapportage week 2</a></span><span class="filedownload"><a href="./files/rapportage02.pdf" download>Download</a></span></div>
                 <div><span id="rapportages" class="filecol"><a href="./files/rapportage03.pdf">Voortgangsrapportage week 3</a></span><span class="filedownload"><a href="./files/rapportage03.pdf" download>Download</a></span></div>
-                <div><span id="risklogs" class="filecol"><a href="./files/risklog01.pdf">Risk log</a></span><span class="filedownload"><a href="./files/risklog01.pdf" download>Download</a></span></div>
+                <div><span id="rapportages" class="filecol"><a href="./files/rapportage04.pdf">Voortgangsrapportage week 4</a></span><span class="filedownload"><a href="./files/rapportage04.pdf" download>Download</a></span></div>
+                <div><span id="risklogs" class="filecol"><a href="./files/risklog02.pdf">Risk log</a></span><span class="filedownload"><a href="./files/risklog02.pdf" download>Download</a></span></div>
                 <div><span id="uren" class="filecol"><a href="./files/uren.pdf">Urenverantwoording</a></span><span class="filedownload"><a href="./files/uren.pdf" download>Download</a></span></div>
             </div>
         </div>
@@ -52,11 +53,11 @@
         <div class="filelist" id="zelfevaluaties_list">
             <span>Zelfevaluaties<span class="right">&#9650</span></span>
             <div class="filetable" id="zelfevaluaties_list_table">
-                <div><span id="kirty" class="filecol"><a href="#">Kirty (Week 5) (nog niet beschikbaar)</a></span><span class="filedownload"><a href="#" download>Download</a></span></div>
+                <div><span id="kirty" class="filecol"><a href="./files/zelfevaluatiekirty5.pdf">Kirty (Week 5)</a></span><span class="filedownload"><a href="./files/zelfevaluatiekirty5.pdf" download>Download</a></span></div>
                 <div><span id="kirty" class="filecol"><a href="#">Kirty (Week 10) (nog niet beschikbaar)</a></span><span class="filedownload"><a href="#" download>Download</a></span></div>
-                <div><span id="justin" class="filecol"><a href="#">Justin (Week 5) (nog niet beschikbaar)</a></span><span class="filedownload"><a href="#" download>Download</a></span></div>
+                <div><span id="justin" class="filecol"><a href="./files/zelfevaluatiejustin5.pdf">Justin (Week 5)</a></span><span class="filedownload"><a href="./files/zelfevaluatiejustin5.pdf" download>Download</a></span></div>
                 <div><span id="justin" class="filecol"><a href="#">Justin (Week 10) (nog niet beschikbaar)</a></span><span class="filedownload"><a href="#" download>Download</a></span></div>
-                <div><span id="sander" class="filecol"><a href="#">Sander (Week 5) (nog niet beschikbaar)</a></span><span class="filedownload"><a href="#" download>Download</a></span></div>
+                <div><span id="sander" class="filecol"><a href="./files/zelfevaluatiesander5.pdf">Sander (Week 5)</a></span><span class="filedownload"><a href="./files/zelfevaluatiesander5.pdf" download>Download</a></span></div>
                 <div><span id="sander" class="filecol"><a href="#">Sander (Week 10) (nog niet beschikbaar)</a></span><span class="filedownload"><a href="#" download>Download</a></span></div>
             </div>
         </div>
@@ -73,7 +74,7 @@
         <a href="https://github.com/SanderTheDragon/Hogeschool-Project-2">Github</a>
     </div>
     
-    <body style="overflow: hidden;">
+    <body>
         <script>
             curl = "";
             
@@ -94,7 +95,7 @@
                 if (elem.attr("style") == "transform: rotate(" + end + "deg);")
                     return;
                 
-                //$("body").css("overflow", "hidden");
+                $("body").css("overflow", "hidden");
                 
                 $({deg: start}).animate({deg: end}, {
                     duration: 500,
@@ -103,9 +104,9 @@
                             transform: 'rotate(' + now + 'deg)'
                         });
                     },
-                    /*done: function() {
+                    done: function() {
                         $("body").css("overflow", "auto");
-                    }*/
+                    }
                 });
             }
             
@@ -177,7 +178,11 @@
                         if ($(this).attr("id") == id + "_list_table")
                             $(this).slideDown(500);
                         else
+                        {
+                            $(this).parent().removeClass("expanded")
+                            rotate($(this).parent().children("span").children(".right"), 180, 0);
                             $(this).slideUp(500);
+                        }
                     });
                 });
                 
