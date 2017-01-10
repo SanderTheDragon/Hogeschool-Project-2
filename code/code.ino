@@ -5,7 +5,7 @@ const int sensor2Echo = 5;
 
 void setup()
 {
-  Serial.begin (9600);
+  Serial.begin(9600);
   
   pinMode(sensor1Trigger, OUTPUT);
   pinMode(sensor1Echo, INPUT);
@@ -37,6 +37,8 @@ int getDistance1()
   Serial.print("Sensor 1: ");
   Serial.print(distance);
   Serial.print("\n");
+
+  return distance;
 }
 
 int getDistance2()
@@ -56,6 +58,8 @@ int getDistance2()
   Serial.print("Sensor 2: ");
   Serial.print(distance);
   Serial.print("\n");
+
+  return distance;
 }
 
 void goLeft()
