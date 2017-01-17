@@ -1,4 +1,4 @@
-#include <Stepper.h>
+#include <CustomStepper.h>
 
 const int sensor1Trigger = 2;
 const int sensor1Echo = 3;
@@ -8,15 +8,18 @@ const int sensor2Echo = 5;
 const int stepper1Pins[4] = { 6, 7, 8, 9 };
 const int stepper2Pins[4] = { 10, 11, 12, 13 };
 
-const int stepsPerMotorRev = 32;
-const int stepsPerOutputRev = stepsPerMotorRev * 64;
-
-Stepper stepper1(stepsPerMotorRev, stepper1Pins[0], stepper1Pins[1], stepper1Pins[2], stepper1Pins[3]);
-Stepper stepper2(stepsPerMotorRev, stepper2Pins[0], stepper2Pins[1], stepper2Pins[2], stepper2Pins[3]);
+CustomStepper stepper1(stepper1Pins[0], stepper1Pins[1], stepper1Pins[2], stepper1Pins[3], (byte[]){8, B1000, B1100, B0100, B0110, B0010, B0011, B0001, B1001});
+CustomStepper stepper2(stepper2Pins[0], stepper2Pins[1], stepper2Pins[2], stepper2Pins[3], (byte[]){8, B1000, B1100, B0100, B0110, B0010, B0011, B0001, B1001});
 
 void setup()
 {
-  Serial.begin(9600);
+  //Serial.begin(9600);
+
+  stepper1.setRPM(15);
+  stepper1.setSPR(4075.7728395);
+  
+  stepper2.setRPM(15);
+  stepper2.setSPR(4075.7728395);
   
   pinMode(sensor1Trigger, OUTPUT);
   pinMode(sensor1Echo, INPUT);
@@ -26,9 +29,19 @@ void setup()
 
 void loop()
 {
-  getDistance1();
-  getDistance2();
-  delay(1000);
+  if (getDistance1() < 10)
+  {
+    driveStop();
+    driveBackwards();
+  }
+  else
+  {
+    driveStop();
+    driveForwards();
+  }
+  
+  stepper1.run();
+  stepper2.run();
 }
 
 int getDistance1()
@@ -45,9 +58,9 @@ int getDistance1()
   if (distance > 200 || distance < 0)
     distance = -1;
   
-  Serial.print("Sensor 1: ");
-  Serial.print(distance);
-  Serial.print("\n");
+  //Serial.print("Sensor 1: ");
+  //Serial.print(distance);
+  //Serial.print("\n");
 
   return distance;
 }
@@ -66,27 +79,57 @@ int getDistance2()
   if (distance > 200 || distance < 0)
     distance = -1;
   
-  Serial.print("Sensor 2: ");
-  Serial.print(distance);
-  Serial.print("\n");
+  //Serial.print("Sensor 2: ");
+  //Serial.print(distance);
+  //Serial.print("\n");
 
   return distance;
 }
 
-void motorLeft(int direction, int time = 1000)
+void motorLeft(int direction)
 {
-  int steps = stepsPerOutputRev * direction;
-  stepper1.setSpeed(640);
-  stepper1.step(steps);
-  delay(time);
+  if (stepper1.isDone())
+  {
+    //Serial.print("Motor left: ");
+    //Serial.print(direction);
+    //Serial.print("\n");
+    
+    stepper1.setDirection(CW);
+    
+    if (direction < 0)
+      stepper1.setDirection(CCW);
+
+    if (direction == 0)
+    {
+      stepper1.setDirection(STOP);
+      return;
+    }
+    
+    stepper1.rotate(1);
+  }
 }
 
-void motorRight(int direction, int time = 1000)
+void motorRight(int direction)
 {
-  int steps = stepsPerOutputRev * direction;
-  stepper2.setSpeed(640);
-  stepper2.step(steps);
-  delay(time);
+  if (stepper2.isDone())
+  {
+    //Serial.print("Motor right: ");
+    //Serial.print(direction);
+    //Serial.print("\n");
+    
+    stepper2.setDirection(CW);
+    
+    if (direction < 0)
+      stepper2.setDirection(CCW);
+    
+    if (direction == 0)
+    {
+      stepper2.setDirection(STOP);
+      return;
+    }
+     
+    stepper2.rotate(1);
+  }
 }
 
 void goLeft()
@@ -103,13 +146,23 @@ void goRight()
 
 void driveForwards()
 {
-  motorLeft(1);
+  //Serial.println("Forwards");
+  
+  motorLeft(-1);
   motorRight(1);
 }
 
 void driveBackwards()
 {
-  motorLeft(-1);
+  //Serial.println("Backwards");
+  
+  motorLeft(1);
   motorRight(-1);
+}
+
+void driveStop()
+{
+  motorLeft(0);
+  motorRight(0);
 }
 
