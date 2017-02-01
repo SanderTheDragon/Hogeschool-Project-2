@@ -20,7 +20,7 @@ bool reqDistance = true;
 
 void setup()
 {
-  Serial.begin(9600);
+  //Serial.begin(9600);
   
   stepper1.setRPM(15);
   stepper1.setSPR(4075.7728395);
@@ -43,7 +43,7 @@ void loop()
     
     if (distance1 == 0)
     {
-      distance1 = 10;
+      distance1 = 0;
     }
     
     if (distance2 == 0)
@@ -51,11 +51,11 @@ void loop()
       distance2 = 200;
     }
 
-    Serial.print("Sensor 1: ");
-    Serial.println(distance1);
+    //Serial.print("Sensor 1: ");
+    //Serial.println(distance1);
     
-    Serial.print("Sensor 2: ");
-    Serial.println(distance2);
+    //Serial.print("Sensor 2: ");
+    //Serial.println(distance2);
 
     if (rightSteps > 0)
       goRight();
@@ -67,13 +67,13 @@ void loop()
     {
       if ((distance1 < 5 || distance1 > 10) && distance2 < 10)
       {
-        leftSteps = 72;
+        leftSteps = 35;
         straightSteps = 72;
       }
       
       if (distance2 > 10)
       {
-        rightSteps = 72;
+        rightSteps = 35;
         straightSteps = 72;
       }
       
