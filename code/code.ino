@@ -74,8 +74,11 @@ void loop()
     else if (straightSteps > 0)
     {
       goStraight();
-    
-      if (distance1 < 5)
+      if (distance3 > 10)
+      {
+        backSteps = 32;
+        leftSteps = 35;
+      } else if (distance1 < 5)
       {
         leftSteps = 35;
         straightSteps = 36;
@@ -84,11 +87,7 @@ void loop()
     else
     {
       
-    if (distance3 > 10)
-    {
-      backSteps = 32;
-      leftSteps = 35;
-    } else if (distance2 > 10)
+      if (distance2 > 10)
       {
         straightstepsbefore = 5;
         rightSteps = 35;
@@ -160,6 +159,5 @@ void goBack()
 
   backSteps--;
 }
-
 
 
