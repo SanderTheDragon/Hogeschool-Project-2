@@ -71,15 +71,15 @@
     </div>
     
     <div style="display: none;" id="code">
-        <a href="https://github.com/SanderTheDragon/Hogeschool-Project-2">Github</a>
+        <a target="_blank" href="https://github.com/SanderTheDragon/Hogeschool-Project-2">Github</a>
     </div>
     
     <div style="display: none;" id="video">
         <div class="filelist" id="oefendoolhof_list">
             <span>Oefendoolhof<span class="right">&#9650</span></span>
-            <div class="filetable" id="oefendoolhof_list_table">
+            <div class="filetable videoContainer" id="oefendoolhof_list_table">
                 <div>
-                    <video width="352" height="640" controls>
+                    <video id="vid" width="352" height="640" controls>
                         <source src="./files/oefendoolhof.mp4">
                         HTML5 video werkt niet, download <a href="./files/oefendoolhof.mp4">hier</a>
                     </video>
@@ -88,9 +88,9 @@
         </div>
         <div class="filelist" id="try1_list">
             <span>Poging 1<span class="right">&#9650</span></span>
-            <div class="filetable" id="try1_list_table">
+            <div class="filetable videoContainer" id="try1_list_table">
                 <div>
-                    <video width="352" height="640" controls>
+                    <video id="vid" width="352" height="640" controls>
                         <source src="./files/doolhof-faal.mp4">
                         HTML5 video werkt niet, download <a href="./files/doolhof-faal.mp4">hier</a>
                     </video>
@@ -249,6 +249,10 @@
                             rotate($(this).parent().children("span").children(".right"), 180, 0);
                             $(this).slideUp(500);
                         }
+                        
+                        $("video").each(function() {
+                            this.pause();
+                        });
                     });
                         
                     /*tar = $(this).parent().attr("target");
@@ -314,7 +318,9 @@
                         }
                     });
                     
-                    
+                    $("video").each(function() {
+                        this.pause();
+                    });
                     
                     $(".subnav").each(function() {
                         if (!($(this).attr("id") == id.substring(0, id.indexOf('_', 2))))
